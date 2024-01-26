@@ -1,0 +1,8 @@
+C:\Users\Abid Ali\source\repos\Crescent\Crescent\bin\Debug\Crescent.exe.config
+C:\Users\Abid Ali\source\repos\Crescent\Crescent\bin\Debug\Crescent.exe
+C:\Users\Abid Ali\source\repos\Crescent\Crescent\bin\Debug\Crescent.pdb
+C:\Users\Abid Ali\source\repos\Crescent\Crescent\obj\Debug\Crescent.csproj.AssemblyReference.cache
+C:\Users\Abid Ali\source\repos\Crescent\Crescent\obj\Debug\Crescent.csproj.SuggestedBindingRedirects.cache
+C:\Users\Abid Ali\source\repos\Crescent\Crescent\obj\Debug\Crescent.csproj.CoreCompileInputs.cache
+C:\Users\Abid Ali\source\repos\Crescent\Crescent\obj\Debug\Crescent.exe
+C:\Users\Abid Ali\source\repos\Crescent\Crescent\obj\Debug\Crescent.pdb
