@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dcl:schema name="ORMModel1" xmlns:dcl="http://schemas.orm.net/DIL/DCIL" xmlns:dil="http://schemas.orm.net/DIL/DIL" xmlns:ddt="http://schemas.orm.net/DIL/DILDT" xmlns:dep="http://schemas.orm.net/DIL/DILEP" xmlns:dml="http://schemas.orm.net/DIL/DMIL" xmlns:ddl="http://schemas.orm.net/DIL/DDIL">
+	<dcl:table name="Moon">
+		<dcl:column name="moonName" isNullable="false" isIdentity="false">
+			<dcl:predefinedDataType name="CHARACTER VARYING" length="20" />
+		</dcl:column>
+		<dcl:column name="mass" isNullable="true" isIdentity="false">
+			<dcl:predefinedDataType name="DECIMAL" precision="19" />
+		</dcl:column>
+		<dcl:column name="planetName" isNullable="true" isIdentity="false">
+			<dcl:predefinedDataType name="CHARACTER VARYING" length="20" />
+		</dcl:column>
+		<dcl:uniquenessConstraint name="Moon_PK" isPrimary="true">
+			<dcl:columnRef name="moonName" />
+		</dcl:uniquenessConstraint>
+		<dcl:uniquenessConstraint name="Moon_UC" isPrimary="false">
+			<dcl:columnRef name="mass" />
+		</dcl:uniquenessConstraint>
+		<dcl:referenceConstraint name="Moon_FK" targetTable="Planet">
+			<dcl:columnRef sourceName="planetName" targetName="planetName" />
+		</dcl:referenceConstraint>
+	</dcl:table>
+	<dcl:table name="Planet">
+		<dcl:column name="planetName" isNullable="false" isIdentity="false">
+			<dcl:predefinedDataType name="CHARACTER VARYING" length="20" />
+		</dcl:column>
+		<dcl:column name="mass" isNullable="true" isIdentity="false">
+			<dcl:predefinedDataType name="DECIMAL" precision="19" />
+		</dcl:column>
+		<dcl:column name="hasADistanceStarName" isNullable="true" isIdentity="false">
+			<dcl:predefinedDataType name="CHARACTER VARYING" length="20" />
+		</dcl:column>
+		<dcl:column name="orbitsStarName" isNullable="true" isIdentity="false">
+			<dcl:predefinedDataType name="CHARACTER VARYING" length="20" />
+		</dcl:column>
+		<dcl:uniquenessConstraint name="Planet_PK" isPrimary="true">
+			<dcl:columnRef name="planetName" />
+		</dcl:uniquenessConstraint>
+		<dcl:uniquenessConstraint name="Planet_UC" isPrimary="false">
+			<dcl:columnRef name="mass" />
+		</dcl:uniquenessConstraint>
+		<dcl:referenceConstraint name="Planet_FK1" targetTable="Star">
+			<dcl:columnRef sourceName="orbitsStarName" targetName="starName" />
+		</dcl:referenceConstraint>
+		<dcl:referenceConstraint name="Planet_FK2" targetTable="Star">
+			<dcl:columnRef sourceName="hasADistanceStarName" targetName="starName" />
+		</dcl:referenceConstraint>
+	</dcl:table>
+	<dcl:table name="Star">
+		<dcl:column name="starName" isNullable="false" isIdentity="false">
+			<dcl:predefinedDataType name="CHARACTER VARYING" length="20" />
+		</dcl:column>
+		<dcl:column name="blackholeId" isNullable="true" isIdentity="false">
+			<dcl:predefinedDataType name="INTEGER" />
+		</dcl:column>
+		<dcl:uniquenessConstraint name="Star_PK" isPrimary="true">
+			<dcl:columnRef name="starName" />
+		</dcl:uniquenessConstraint>
+		<dcl:referenceConstraint name="Star_FK" targetTable="Blackhole">
+			<dcl:columnRef sourceName="blackholeId" targetName="blackholeId" />
+		</dcl:referenceConstraint>
+	</dcl:table>
+	<dcl:table name="Abidstar">
+		<dcl:column name="abidstarName" isNullable="false" isIdentity="false">
+			<dcl:predefinedDataType name="CHARACTER VARYING" length="20" />
+		</dcl:column>
+		<dcl:uniquenessConstraint name="Abidstar_PK" isPrimary="true">
+			<dcl:columnRef name="abidstarName" />
+		</dcl:uniquenessConstraint>
+		<dcl:referenceConstraint name="Abidstar_FK" targetTable="Star">
+			<dcl:columnRef sourceName="abidstarName" targetName="starName" />
+		</dcl:referenceConstraint>
+	</dcl:table>
+	<dcl:table name="Ruckerstar">
+		<dcl:column name="ruckerstarName" isNullable="false" isIdentity="false">
+			<dcl:predefinedDataType name="CHARACTER VARYING" length="20" />
+		</dcl:column>
+		<dcl:uniquenessConstraint name="Ruckerstar_PK" isPrimary="true">
+			<dcl:columnRef name="ruckerstarName" />
+		</dcl:uniquenessConstraint>
+		<dcl:referenceConstraint name="Ruckerstar_FK" targetTable="Star">
+			<dcl:columnRef sourceName="ruckerstarName" targetName="starName" />
+		</dcl:referenceConstraint>
+	</dcl:table>
+	<dcl:table name="Blackhole">
+		<dcl:column name="blackholeId" isNullable="false" isIdentity="true">
+			<dcl:predefinedDataType name="INTEGER" />
+		</dcl:column>
+		<dcl:uniquenessConstraint name="Blackhole_PK" isPrimary="true">
+			<dcl:columnRef name="blackholeId" />
+		</dcl:uniquenessConstraint>
+	</dcl:table>
+</dcl:schema>

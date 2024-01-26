@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dil:root xmlns:dil="http://schemas.orm.net/DIL/DIL" xmlns:dcl="http://schemas.orm.net/DIL/DCIL" xmlns:ddt="http://schemas.orm.net/DIL/DILDT" xmlns:dep="http://schemas.orm.net/DIL/DILEP" xmlns:dms="http://schemas.orm.net/DIL/DILMS" xmlns:dml="http://schemas.orm.net/DIL/DMIL" xmlns:ddl="http://schemas.orm.net/DIL/DDIL">
+	<dms:startTransactionStatement isolationLevel="SERIALIZABLE" accessMode="READ WRITE" />
+	<ddl:schemaDefinition schemaName="ORMModel1" defaultCharacterSet="UTF8" />
+	<dms:setSchemaStatement>
+		<ddt:characterStringLiteral value="ORMMODEL1" />
+	</dms:setSchemaStatement>
+	<ddl:tableDefinition name="Moon" schema="ORMModel1">
+		<ddl:columnDefinition name="moonName">
+			<ddt:characterString type="CHARACTER VARYING" length="20" />
+			<ddl:columnConstraintDefinition>
+				<ddl:notNullKeyword />
+			</ddl:columnConstraintDefinition>
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="mass">
+			<ddt:exactNumeric type="DECIMAL" precision="19" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="planetName">
+			<ddt:characterString type="CHARACTER VARYING" length="20" />
+		</ddl:columnDefinition>
+		<ddl:tableConstraintDefinition name="Moon_PK">
+			<ddl:uniqueConstraintDefinition type="PRIMARY KEY">
+				<dep:simpleColumnReference name="moonName" />
+			</ddl:uniqueConstraintDefinition>
+		</ddl:tableConstraintDefinition>
+		<ddl:tableConstraintDefinition name="Moon_UC">
+			<ddl:uniqueConstraintDefinition type="UNIQUE">
+				<dep:simpleColumnReference name="mass" />
+			</ddl:uniqueConstraintDefinition>
+		</ddl:tableConstraintDefinition>
+	</ddl:tableDefinition>
+	<ddl:tableDefinition name="Planet" schema="ORMModel1">
+		<ddl:columnDefinition name="planetName">
+			<ddt:characterString type="CHARACTER VARYING" length="20" />
+			<ddl:columnConstraintDefinition>
+				<ddl:notNullKeyword />
+			</ddl:columnConstraintDefinition>
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="mass">
+			<ddt:exactNumeric type="DECIMAL" precision="19" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="hasADistanceStarName">
+			<ddt:characterString type="CHARACTER VARYING" length="20" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="orbitsStarName">
+			<ddt:characterString type="CHARACTER VARYING" length="20" />
+		</ddl:columnDefinition>
+		<ddl:tableConstraintDefinition name="Planet_PK">
+			<ddl:uniqueConstraintDefinition type="PRIMARY KEY">
+				<dep:simpleColumnReference name="planetName" />
+			</ddl:uniqueConstraintDefinition>
+		</ddl:tableConstraintDefinition>
+		<ddl:tableConstraintDefinition name="Planet_UC">
+			<ddl:uniqueConstraintDefinition type="UNIQUE">
+				<dep:simpleColumnReference name="mass" />
+			</ddl:uniqueConstraintDefinition>
+		</ddl:tableConstraintDefinition>
+	</ddl:tableDefinition>
+	<ddl:tableDefinition name="Star" schema="ORMModel1">
+		<ddl:columnDefinition name="starName">
+			<ddt:characterString type="CHARACTER VARYING" length="20" />
+			<ddl:columnConstraintDefinition>
+				<ddl:notNullKeyword />
+			</ddl:columnConstraintDefinition>
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="blackholeId">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:tableConstraintDefinition name="Star_PK">
+			<ddl:uniqueConstraintDefinition type="PRIMARY KEY">
+				<dep:simpleColumnReference name="starName" />
+			</ddl:uniqueConstraintDefinition>
+		</ddl:tableConstraintDefinition>
+	</ddl:tableDefinition>
+	<ddl:tableDefinition name="Abidstar" schema="ORMModel1">
+		<ddl:columnDefinition name="abidstarName">
+			<ddt:characterString type="CHARACTER VARYING" length="20" />
+			<ddl:columnConstraintDefinition>
+				<ddl:notNullKeyword />
+			</ddl:columnConstraintDefinition>
+		</ddl:columnDefinition>
+		<ddl:tableConstraintDefinition name="Abidstar_PK">
+			<ddl:uniqueConstraintDefinition type="PRIMARY KEY">
+				<dep:simpleColumnReference name="abidstarName" />
+			</ddl:uniqueConstraintDefinition>
+		</ddl:tableConstraintDefinition>
+	</ddl:tableDefinition>
+	<ddl:tableDefinition name="Ruckerstar" schema="ORMModel1">
+		<ddl:columnDefinition name="ruckerstarName">
+			<ddt:characterString type="CHARACTER VARYING" length="20" />
+			<ddl:columnConstraintDefinition>
+				<ddl:notNullKeyword />
+			</ddl:columnConstraintDefinition>
+		</ddl:columnDefinition>
+		<ddl:tableConstraintDefinition name="Ruckerstar_PK">
+			<ddl:uniqueConstraintDefinition type="PRIMARY KEY">
+				<dep:simpleColumnReference name="ruckerstarName" />
+			</ddl:uniqueConstraintDefinition>
+		</ddl:tableConstraintDefinition>
+	</ddl:tableDefinition>
+	<ddl:tableDefinition name="Blackhole" schema="ORMModel1">
+		<ddl:columnDefinition name="blackholeId">
+			<ddt:exactNumeric type="INTEGER" />
+			<ddl:identityColumnSpecification type="ALWAYS">
+				<ddl:sequenceGeneratorStartWithOption>
+					<ddt:exactNumericLiteral value="1" />
+				</ddl:sequenceGeneratorStartWithOption>
+				<ddl:sequenceGeneratorIncrementByOption>
+					<ddt:exactNumericLiteral value="1" />
+				</ddl:sequenceGeneratorIncrementByOption>
+			</ddl:identityColumnSpecification>
+			<ddl:columnConstraintDefinition>
+				<ddl:notNullKeyword />
+			</ddl:columnConstraintDefinition>
+		</ddl:columnDefinition>
+		<ddl:tableConstraintDefinition name="Blackhole_PK">
+			<ddl:uniqueConstraintDefinition type="PRIMARY KEY">
+				<dep:simpleColumnReference name="blackholeId" />
+			</ddl:uniqueConstraintDefinition>
+		</ddl:tableConstraintDefinition>
+	</ddl:tableDefinition>
+	<ddl:alterTableStatement name="Moon" schema="ORMModel1">
+		<ddl:addTableConstraintDefinition name="Moon_FK">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="planetName" />
+				<ddl:referencesSpecification name="Planet" onDelete="RESTRICT" onUpdate="RESTRICT" schema="ORMModel1">
+					<dep:simpleColumnReference name="planetName" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Planet" schema="ORMModel1">
+		<ddl:addTableConstraintDefinition name="Planet_FK1">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="orbitsStarName" />
+				<ddl:referencesSpecification name="Star" onDelete="RESTRICT" onUpdate="RESTRICT" schema="ORMModel1">
+					<dep:simpleColumnReference name="starName" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Planet" schema="ORMModel1">
+		<ddl:addTableConstraintDefinition name="Planet_FK2">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="hasADistanceStarName" />
+				<ddl:referencesSpecification name="Star" onDelete="RESTRICT" onUpdate="RESTRICT" schema="ORMModel1">
+					<dep:simpleColumnReference name="starName" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Star" schema="ORMModel1">
+		<ddl:addTableConstraintDefinition name="Star_FK">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="blackholeId" />
+				<ddl:referencesSpecification name="Blackhole" onDelete="RESTRICT" onUpdate="RESTRICT" schema="ORMModel1">
+					<dep:simpleColumnReference name="blackholeId" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Abidstar" schema="ORMModel1">
+		<ddl:addTableConstraintDefinition name="Abidstar_FK">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="abidstarName" />
+				<ddl:referencesSpecification name="Star" onDelete="RESTRICT" onUpdate="RESTRICT" schema="ORMModel1">
+					<dep:simpleColumnReference name="starName" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Ruckerstar" schema="ORMModel1">
+		<ddl:addTableConstraintDefinition name="Ruckerstar_FK">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="ruckerstarName" />
+				<ddl:referencesSpecification name="Star" onDelete="RESTRICT" onUpdate="RESTRICT" schema="ORMModel1">
+					<dep:simpleColumnReference name="starName" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<dms:commitStatement />
+</dil:root>
